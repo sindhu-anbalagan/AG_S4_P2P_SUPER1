@@ -5,10 +5,13 @@
 *&---------------------------------------------------------------------*
 REPORT ZAG_DEMO_PO_HEADER.
 ** Testing abapgit
+DATA: ls_ekko type ekko.
 SELECT * FROM EKKO
-         INTO @DATA(lt_EKKO)
+         INTO TABLE @DATA(lt_EKKO)
          UP TO 10 rows.
-ENDSELECT.
-  IF Sy-subrc IS INITIAL.
 
+  IF Sy-subrc IS INITIAL.
+    LOOP AT lt_EKKO INTO ls_ekko.
+
+    ENDLOOP.
   ENDIF.
